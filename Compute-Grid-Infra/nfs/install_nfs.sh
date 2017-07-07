@@ -64,6 +64,8 @@ p
 w
 EOF
         createdPartitions="$createdPartitions /dev/${disk}1"
+	#leave the system to settle
+	sleep 10
     done
     
     # Create RAID-0 volume
