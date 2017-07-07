@@ -49,7 +49,7 @@ setup_disks()
 {
     mkdir -p $SHARE_HOME
     mkdir -p $SHARE_SCRATCH
-	mkdir -p $SHARE_APPS
+    mkdir -p $SHARE_APPS
 
 }
 
@@ -90,7 +90,21 @@ setup_user()
 	chown $HPC_USER:$HPC_GROUP $SHARE_SCRATCH
 	chown $HPC_USER:$HPC_GROUP $SHARE_APPS
 }
-
+######################################################################
+create_shares()
+{
+    /usr/bin/test -e /dev/sdc
+    mkfs.xfs /dev/sdc
+    echo "/dev/sdc $SHARE_SCRATCH xfs defaults 0 0" >> /etc/fstab
+}
+######################################################################
+add_exports()
+{
+    echo "$SHARE_HOME    *(rw,async)" >> /etc/exports
+    echo "$SHARE_SCRATCH    *(rw,async)" >> /etc/exports
+    echo "$SHARE_APPS    *(rw,async)" >> /etc/exports
+    
+}
 ######################################################################
 mount_nfs()
 {
@@ -98,7 +112,10 @@ mount_nfs()
 
 	yum -y install nfs-utils nfs-utils-lib
 
-    echo "$SHARE_HOME    *(rw,async)" >> /etc/exports
+    create_shares
+    add_exports
+
+
     systemctl enable rpcbind || echo "Already enabled"
     systemctl enable nfs-server || echo "Already enabled"
     systemctl start rpcbind || echo "Already enabled"
@@ -112,7 +129,9 @@ mount_nfs_suse()
 
 	zypper -n install nfs-client nfs-kernel-server
 
-    echo "$SHARE_HOME    *(rw,async)" >> /etc/exports
+    create_shares
+    add_exports
+
     systemctl enable rpcbind || echo "Already enabled"
     systemctl enable nfs-server || echo "Already enabled"
     systemctl start rpcbind || echo "Already enabled"
@@ -192,5 +211,5 @@ fi
 # Create marker file so we know we're configured
 touch $SETUP_MARKER
 
-shutdown -r +1 &
-exit 0
+#shutdown -r +1 &
+#exit 0
