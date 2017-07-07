@@ -74,6 +74,15 @@ EOF
         sleep 10
         
         mdadm /dev/$raidDevice
+        
+	blkid 
+	cat /proc/mdstat
+	echo sleep 10
+	sleep 10
+	blkid 
+	cat /proc/mdstat
+	
+
 
         if [ "$filesystem" == "xfs" ]; then
             mkfs -t $filesystem /dev/$raidDevice
