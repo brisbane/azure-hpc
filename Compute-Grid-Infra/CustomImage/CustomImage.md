@@ -30,7 +30,7 @@ You have to provide these parameters to the template :
 * _imageBlobName_ : name of the blob containing the master image in the format of dir/subdir/image.vhd
 * _storageAccountKey_ : Storage Account key for accessing the master image
 
-[![Click to deploy template on Azure](http://azuredeploy.net/deploybutton.png "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fxpillons%2Fazure-hpc%2Fmaster%2FCompute-Grid-Infra%2FCustomImage%2Ftransfer-customimage.json)  
+[![Click to deploy template on Azure](http://azuredeploy.net/deploybutton.png "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fbrisbane%2Fazure-hpc%2Fmaster%2FCompute-Grid-Infra%2FCustomImage%2Ftransfer-customimage.json)  
 
 ### Check your deployment
 Once the deployment succeed, each newly created storage account will have a container named *vhds* in which the master image will be located.
@@ -55,7 +55,7 @@ You have to provide these parameters to the template :
 * _script_ : URL of the script to download as a post script install, if any. This will allow image customization after deployment.
 * _cmdLine_ : Command line to run on the _script_ upon startup
 
-[![Click to deploy template on Azure](http://azuredeploy.net/deploybutton.png "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fxpillons%2Fazure-hpc%2Fmaster%2FCompute-Grid-Infra%2FCustomImage%2Fdeploy-customimage.json)  
+[![Click to deploy template on Azure](http://azuredeploy.net/deploybutton.png "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fbrisbane%2Fazure-hpc%2Fmaster%2FCompute-Grid-Infra%2FCustomImage%2Fdeploy-customimage.json)  
 
 ### Check your deployment
 After few minutes you should see all VM scalesets deployed.
