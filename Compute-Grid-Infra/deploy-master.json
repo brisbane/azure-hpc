@@ -4,6 +4,7 @@
   "parameters": {
     "VMsku": {
       "type": "string",
+      "defaultValue": "Standard_DS2_v2",
       "allowedValues": [
         "Standard_DS1_v2",
         "Standard_DS2_v2",
@@ -22,7 +23,7 @@
     },
     "masterImage": {
       "type": "string",
-      "defaultValue": "CentOS_7.3",
+      "defaultValue": "CentOS_7.2",
       "allowedValues": [
         "CentOS_6.7",
         "CentOS_7.2",
@@ -37,10 +38,9 @@
     },
     "sharedStorage": {
       "type": "string",
-      "defaultValue": "none",
+      "defaultValue": "nfsonmaster",
       "allowedValues": [
         "none",
-        "beegfs",
         "nfsonmaster"
       ],
       "metadata": {
@@ -49,7 +49,7 @@
     },
     "dataDiskSize": {
       "type": "string",
-      "defaultValue": "none",
+      "defaultValue": "P10",
       "allowedValues": [
         "none",
         "P10",
@@ -81,7 +81,7 @@
     },
     "scheduler": {
       "type": "string",
-      "defaultValue": "none",
+      "defaultValue": "pbspro",
       "allowedValues": [
         "none",
         "pbspro"
@@ -92,6 +92,7 @@
     },
     "vmPrefix": {
       "type": "string",
+      "defaultValue": "romsa",
       "metadata": {
         "description": "Base string for naming resources (max length of 8)"
       },
@@ -99,6 +100,7 @@
     },
     "adminUserName": {
       "type": "string",
+      "defaultValue": "admin",
       "metadata": {
         "description": "User name for the Virtual Machine."
       }
