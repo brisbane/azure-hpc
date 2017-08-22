@@ -133,7 +133,7 @@
     },
     "adminUsername": {
       "type": "string",
-      "defaultValue": "admin",
+      "defaultValue": "romsadmin",
       "metadata": {
         "description": "Admin username on all VMs."
       }
