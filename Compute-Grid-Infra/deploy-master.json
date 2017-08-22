@@ -117,13 +117,6 @@
       "metadata": {
         "description": "SSH rsa public key file as a string."
       }
-    },
-    "tagName" : {
-      "type": "string",
-      "defaultValue": "ROMSADev",
-      "metadata": {
-        "description": "Informational tags, appears on billing."
-      }
     }
   },
   "variables": {
@@ -234,9 +227,6 @@
       "name": "shared-resources",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
-      "tags": { 
-	"Environment": "[parameters('tagName')]"
-      },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -254,9 +244,6 @@
       "name": "master-nsg",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
-      "tags": {
-        "Environment": "[parameters('tagName')]"
-      },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -274,9 +261,6 @@
       "name": "master-shared-resources",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
-      "tags": {
-        "Environment": "[parameters('tagName')]"
-      },
       "dependsOn": [
         "shared-resources",
         "master-nsg"
@@ -301,9 +285,6 @@
     {
       "name": "master-OS-resources",
       "type": "Microsoft.Resources/deployments",
-      "tags": { 
-	"Environment": "[parameters('tagName')]"
-      },
       "apiVersion": "[variables('deploymentApiVersion')]",
       "dependsOn": [
         "master-shared-resources"
