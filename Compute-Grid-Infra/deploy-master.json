@@ -235,7 +235,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
       "tags": { 
-	"Environment": "[parameters('tag')]"
+	"Environment": "[parameters('tagName')]"
       },
       "properties": {
         "mode": "Incremental",
@@ -255,7 +255,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
       "tags": {
-        "Environment": "[parameters('tag')]"
+        "Environment": "[parameters('tagName')]"
       },
       "properties": {
         "mode": "Incremental",
@@ -275,7 +275,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
       "tags": {
-        "Environment": "[parameters('tag')]"
+        "Environment": "[parameters('tagName')]"
       },
       "dependsOn": [
         "shared-resources",
@@ -302,7 +302,7 @@
       "name": "master-OS-resources",
       "type": "Microsoft.Resources/deployments",
       "tags": { 
-	"Environment": "[parameters('tag')]"
+	"Environment": "[parameters('tagName')]"
       },
       "apiVersion": "[variables('deploymentApiVersion')]",
       "dependsOn": [
