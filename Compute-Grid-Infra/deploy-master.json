@@ -118,12 +118,13 @@
         "description": "SSH rsa public key file as a string."
       }
     },
-    "tag" : {
+    "tagName" : {
       "type": "string",
       "defaultValue": "ROMSADev",
       "metadata": {
         "description": "informational tags, appears on billing."
       }
+    }
   },
   "variables": {
     "location": "[resourceGroup().location]",
