@@ -117,7 +117,13 @@
       "metadata": {
         "description": "SSH rsa public key file as a string."
       }
-    }
+    },
+    "tag" : {
+      "type": "string",
+      "defaultValue": "ROMSADev",
+      "metadata": {
+        "description": "informational tags, appears on billing."
+      }
   },
   "variables": {
     "location": "[resourceGroup().location]",
@@ -227,6 +233,9 @@
       "name": "shared-resources",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deploymentApiVersion')]",
+      "tags": { 
+	"Environment": "[parameters('tag')]"
+      },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -285,6 +294,9 @@
     {
       "name": "master-OS-resources",
       "type": "Microsoft.Resources/deployments",
+      "tags": { 
+	"Environment": "[parameters('tag')]"
+      },
       "apiVersion": "[variables('deploymentApiVersion')]",
       "dependsOn": [
         "master-shared-resources"
