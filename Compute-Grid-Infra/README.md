@@ -46,8 +46,8 @@ You have to provide these parameters to the template :
 * _adminPassword_ : Password to associate to the administrator account. It is highly encourage to use SSH authentication and passwordless instead.
 * _sshKeyData_ : The public SSH key to associate with the administrator user. Format has to be on a single line 'ssh-rsa key'
 * _masterName_ : The short name of the Master VM
-* _postInstallCommand_ : a post installation command to launch after povisioning. This command needs to be encapsulated in quotes, for example **'bash /data/postinstall.sh'**.
-* _imageId_ : Specify the resource ID of the image to be used in the format **/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.Compute/images/{ImageName}** this value is only used when the _computeNodeImage_ is set to **CustomLinux** or **CustomWindows**
+* _postInstallCommand_ : a post installation command to launch after povisioning. This command needs to be encapsulated in quotes, for example **'bash /data/software/poc/post-install-node.sh'**.
+* _imageId_ : Not applicable for this POC
 
 
 [![Click to deploy template on Azure](http://azuredeploy.net/deploybutton.png "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fbrisbane%2Fazure-hpc%2Fromsa%2FCompute-Grid-Infra%2Fdeploy-nodes.json)  
