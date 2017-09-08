@@ -50,7 +50,7 @@ You have to provide these parameters to the template :
 * _adminPassword_ : Password to associate to the administrator account. It is highly encourage to use SSH authentication and passwordless instead.
 * _sshKeyData_ : The public SSH key to associate with the administrator user. Format has to be on a single line 'ssh-rsa key'. This parameter is required.
 * _masterName_ : The short name of the Master VM
-* _postInstallCommand_ : a post installation command to launch after povisioning. This command needs to be encapsulated in quotes, for example **'bash /data/software/poc/post-install-node.sh'**.
+* _postInstallCommand_ : A post installation command to launch during povisioning. This command needs to be encapsulated in quotes, for example **'echo hello world'**.
 * _imageId_ : Not applicable for this POC
 
 
