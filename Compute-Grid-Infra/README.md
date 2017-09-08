@@ -1,8 +1,12 @@
 Table of Contents
 =================
+* [Introduction](#introduction)
 * [Provisioning the nodes](#provisioning-nodes)
   * [Create the networking infrastructure and the jumpbox](#provision-master)
   * [Provision the compute nodes](#provision-the-compute-nodes)
+# Introduction
+This readme was adapted from the upstream version.  For the Marine POC you would have been supplied with a sperate document which details the settings needed for the ROMS POC which superceeds these instructions.Other setting documented only here may work but are untested.
+ 
 # Provisioning Nodes
 ## Create the networking infrastructure and the jumpbox
 The template __deploy-master.json__ will provision the networking infrastructure as well as a master VM exposing an SSH endpoint for remote connection.   
@@ -13,9 +17,9 @@ You have to provide these parameters to the template :
 * _scheduler_ : the job scheduler to be setup. Allowed values are : none, pbspro
 * _monitoring_ : the monitoring tools to be setup. Allowed values are : none, ganglia
 * _masterImage_ : the OS to be used. Should be CentOS_7.2
-* _dataDiskSize_ :  the size of the data disks to attached. Allowed values are : none, P10 (128GB), P20 (512GB), P30 (1023GB)
-* _nbDataDisks_ : Number of data disks to attach. Default is **2**, maximum is **16**.
-* _VMSku_ : This is to specify the instance size of the master VM. For example Standard_DS3_v2
+* _dataDiskSize_ :  the size of the data disks to attached. Allowed values are : none, P10 (128GB), P20 (512GB), P30 (1023GB). P10 (default) or greater should be used
+* _nbDataDisks_ : Number of data disks to attach. Default is **2**, maximum is **16**. A minuimum of 2 is required.
+* _VMSku_ : This is to specify the instance size of the master VM. For example the default of Standard_DS2_v2.
 * _adminUsername_ : This is the name of the administrator account to create on the VM
 * _adminPassword_ : Password to associate to the administrator account. It is highly encourage to use SSH authentication and passwordless instead.
 * _sshKeyData_ : The public SSH key to associate with the administrator user. Format has to be on a single line 'ssh-rsa key'
@@ -34,17 +38,17 @@ Compute nodes are provisioned using VM Scalesets, each set can have up to 100 VM
 
 You have to provide these parameters to the template :
 * _VMsku_ : Instance type to provision. Default is **Standard_H16r**
-* _sharedStorage_ : default is **nfsonmaster**. Allowed values are (nfsonmaster, beegfs, none)
-* _scheduler_ : default is **pbspro**. Allowed values are (pbspro, none)
+* _sharedStorage_ : default is **nfsonmaster**. This is required for the POC
+* _scheduler_ : default is **pbspro**. This is required for the POC
 * _monitoring_ : default is **ganglia**. Allowed values are (ganglia, none)
 * _computeNodeImage_ : OS to use for compute nodes. Default and recommended value is **CentOS-HPC_7.3**
-* _vmSSPrefix_ : 8 characters prefix to use to name the compute nodes. The naming pattern will be **prefixAABBBBBB** where _AA_ is two digit number of the scaleset and _BBBBBB_ is the 8 hexadecimal value inside the Scaleset
-* _instanceCountPerVMSS_ : number of VMs instance inside a single scaleset. Default is 2 to avoid accidental launches of large clusters, maximum is 100
-* _numberOfVMSS_ : number of VM scaleset to create. Default is 1, maximum is 100
+* _vmSSPrefix_ : Up to 8 characters prefix to use to name the compute nodes. The naming pattern will be **prefixAABBBBBB** where _AA_ is two digit number of the scaleset and _BBBBBB_ is the 8 hexadecimal value inside the Scaleset
+* _instanceCountPerVMSS_ : number of VMs instance inside a single scaleset. Default is 2 to avoid accidental launches of large clusters, maximum is 100. **This should be changed to 30 for the POC**
+* _numberOfVMSS_ : number of VM scaleset to create. Default and recommended value is 1, maximum is 100
 * _RGvnetName_ : The name of the Resource Group used to deploy the Master VM and the VNET.
 * _adminUsername_ : This is the name of the administrator account to create on the VM. It is recommended to use the same than for the Master VM.
 * _adminPassword_ : Password to associate to the administrator account. It is highly encourage to use SSH authentication and passwordless instead.
-* _sshKeyData_ : The public SSH key to associate with the administrator user. Format has to be on a single line 'ssh-rsa key'
+* _sshKeyData_ : The public SSH key to associate with the administrator user. Format has to be on a single line 'ssh-rsa key'. This parameter is required.
 * _masterName_ : The short name of the Master VM
 * _postInstallCommand_ : a post installation command to launch after povisioning. This command needs to be encapsulated in quotes, for example **'bash /data/software/poc/post-install-node.sh'**.
 * _imageId_ : Not applicable for this POC
